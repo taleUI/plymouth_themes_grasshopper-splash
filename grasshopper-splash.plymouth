@@ -1,6 +1,6 @@
 [Plymouth Theme]
 Name=Grasshopper splash
-Description=Ubuntu logo with spinning colored stripes
+Description=Grasshopper bootsplash
 ModuleName=script
 
 [script]
