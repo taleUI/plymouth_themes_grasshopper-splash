@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=Grasshopper splash
+Description=Ubuntu logo with spinning colored stripes
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/grasshopper-splash
+ScriptFile=/usr/share/plymouth/themes/grasshopper-splash/grasshopper-splash.script
+UseFirmwareBackground=false

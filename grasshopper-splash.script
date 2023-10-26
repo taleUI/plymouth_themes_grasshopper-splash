@@ -1,0 +1,55 @@
+
+Window.SetBackgroundTopColor (0, 0, 0);           
+Window.SetBackgroundBottomColor (0, 0, 0);      
+bg_image = Image ("bg.png");
+bg_image = bg_image.Scale (Window.GetWidth (),Window.GetHeight ());
+bg =  Sprite (bg_image);
+bg.SetZ (-10);
+
+
+yPos = (2/5);
+if (Plymouth.GetMode () == "shutdown")
+{
+    yPos = 0.5;
+}
+
+
+s = 0.75;
+
+logo_image = Image ("logo.png");
+logo_image = logo_image.Scale (173.5 * s , 160 * s);
+logo = Sprite (logo_image);
+logo.SetX (Window.GetWidth ()  / 2 - logo_image.GetWidth()  / 2);
+logo.SetY ((Window.GetHeight() / 2) - logo_image.GetHeight() / 2);
+
+
+#----------------------------------------- Progress Bar --------------------------------
+
+progress_box.image = Image("progress_box.png");
+progress_box.sprite = Sprite(progress_box.image);
+
+progress_box.x = Window.GetX() + Window.GetWidth() / 2 - progress_box.image.GetWidth() / 2;
+progress_box.y = Window.GetY() + Window.GetHeight() * 0.62 - progress_box.image.GetHeight() / 2;
+progress_box.sprite.SetPosition(progress_box.x, progress_box.y, 1);
+
+progress_bar.original_image = Image("progress_bar.png");
+progress_bar.sprite = Sprite();
+
+progress_bar.x = Window.GetX() + Window.GetWidth() / 2 - progress_box.image.GetWidth() / 2;
+progress_bar.y = Window.GetY() + Window.GetHeight() * 0.62 - progress_box.image.GetHeight() / 2;
+progress_bar.sprite.SetPosition(progress_bar.x, progress_bar.y, 0);
+
+fun progress_callback (duration, progress)
+  {
+    if (progress_bar.image.GetWidth () != Math.Int (progress_bar.original_image.GetWidth ()))
+      {
+        progress_bar.image = progress_bar.original_image.Scale(progress_bar.original_image.GetWidth(progress_bar.original_image) * progress, progress_bar.original_image.GetHeight());
+        progress_bar.sprite.SetImage (progress_bar.image);
+      }
+  }
+
+Plymouth.SetBootProgressFunction(progress_callback);
+
+
+
+
